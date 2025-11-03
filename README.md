@@ -21,7 +21,8 @@ Breakfast shop operators in Taiwan need a data-driven way to **forecast and opti
 - **Revenue class model:** **Random Forest** classifier to predict expected revenue tier; accuracy ~0.65 on holdout; dropping “bus density” improved accuracy.
 - **Cost proxy:** expected rent (area rental) standardized by locality.
 - **Score:** **standardized expected revenue – standardized expected rent**, then mapped to a **0–5 competitiveness score** for easy ranking.
-<img width="567" height="487" alt="截圖 2025-11-04 凌晨12 42 44" src="https://github.com/user-attachments/assets/d2c4c29a-5765-4999-a83c-cee417e65ed6" />
+  
+<img width="567" height="600" alt="截圖 2025-11-04 凌晨12 42 44" src="https://github.com/user-attachments/assets/d2c4c29a-5765-4999-a83c-cee417e65ed6" />
 <img width="567" height="487" alt="截圖 2025-11-04 凌晨12 42 51" src="https://github.com/user-attachments/assets/e0114a91-a4f2-4ad6-af4f-394aba3ae785" />
 
 ---
@@ -34,6 +35,7 @@ Breakfast shop operators in Taiwan need a data-driven way to **forecast and opti
 - **Method:** **K-means** with scaling; silhouette/elbow to pick *k*.  
 - **Segments:** (1) **High-value delivery**, (2) **Habitual takeout**, (3) **Dine-in experience**.
 - **Plays:** LINE preorder for takeout, delivery within a set radius for delivery segment, **group-order discounts** for nearby offices, **hotel breakfast partnership** where present.
+  
 <img width="567" height="487" alt="截圖 2025-11-04 凌晨12 44 14" src="https://github.com/user-attachments/assets/0064ba86-7d99-4d92-945d-b20dab95dadd" />
 
 ---
@@ -54,13 +56,14 @@ Breakfast shop operators in Taiwan need a data-driven way to **forecast and opti
 **Highlights:**
 - **Targets & inputs:** predict item rank for **2023-10-07 → 2023-10-13** from historical sales; key fields include **product name** (one-hot), **invoice date/time**, and derived velocity features.  
 - **Model:** **Random Forest**; produced **top-N lists** per store/date and a **rank lookup** (get a specific item’s rank or the top-N on a day).
+- 
 <img width="567" height="487" alt="截圖 2025-11-04 凌晨12 44 57" src="https://github.com/user-attachments/assets/9cdf8e8a-6112-4117-97a4-31b1bafab127" />
 
 ---
 
 ## P5 — Industry Scorecard for Taiwan Breakfast Shops
-**Solution:** A concise **scorecard** combining **site score**, **segment potential**, and **forecast quality** to benchmark locations and track impact; deliv
-ered as a small BI view and exportable report.
+**Solution:** A concise **scorecard** combining **site score**, **segment potential**, and **forecast quality** to benchmark locations and track impact; delivered as a small BI view and exportable report.
+
 <img width="567" height="487" alt="截圖 2025-11-04 凌晨12 46 41" src="https://github.com/user-attachments/assets/98fd78af-f252-4323-948f-57282fb10485" />
 
 ---
