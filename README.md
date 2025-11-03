@@ -3,45 +3,88 @@
 **Role:** Data Scientist (Team Project)  
 **When:** Nov–Dec 2023 · **Award:** 2nd place, National WAI AI Data Hackathon (industry judges, real commercial datasets)
 
-> **Note:** This portfolio uses sanitized descriptions and **synthetic examples only**.
+> **Note:** This portfolio uses sanitized descriptions and **synthetic examples only**.  
+> No proprietary data, partner IDs, or credentials are included.
 
 ---
 
 ## Problem
-Breakfast shop operators in Taiwan need a data-driven way to **forecast and optimize revenue** using **geospatial retail signals** (competition density, proximity to transit and schools, footfall proxies) and transaction patterns.
+Breakfast shop operators in Taiwan need a data-driven way to **forecast and optimize revenue** using **geospatial signals** (competition density, public transit proximity, neighborhood income) and transaction patterns. :contentReference[oaicite:0]{index=0}
 
 ---
 
 ## P1 — Geospatial Site Competitiveness Scoring
-**Solution:** Built a site-scoring model from **Google Maps API** open data to rank candidate locations by expected competitiveness.  
-**Tech highlights:** H3/hex grid features; POI **density/proximity** metrics; distance matrix approximations; **XGBoost** with k-fold CV; **SHAP** for interpretable drivers.
+**Solution.** Scored candidate locations by expected profitability using geospatial features and a simple composite index.
+
+**Highlights**
+- **Features:** population density, bus-stop density, neighborhood median income, breakfast-shop density (Google Maps POI). :contentReference[oaicite:1]{index=1}
+- **Revenue class model:** **Random Forest** classifier to predict expected revenue tier; accuracy ~0.65 on holdout; dropping “bus density” improved accuracy. :contentReference[oaicite:2]{index=2}
+- **Cost proxy:** expected rent (area rental) standardized by locality. :contentReference[oaicite:3]{index=3}
+- **Score:** **standardized expected revenue – standardized expected rent**, then mapped to a **0–5 competitiveness score** for easy ranking. :contentReference[oaicite:4]{index=4}
 
 ---
 
-## P2 — Customer Segmentation with K-means
-**Solution:** Clustered customers to guide pricing, promotion, and assortment by segment.  
-**Tech highlights:** **K-means** with **StandardScaler**, elbow/silhouette to choose *k*; **RFM**, visit time-of-day and basket composition features; post-hoc rules that map segments to **actionable plays** (e.g., commuter bundles, weekend family sets, delivery-only promos).
+## P2 — Customer Segmentation (K-means)
+**Solution.** Clustered customers to guide pricing, promotions, delivery radius, and bundles.
+
+**Highlights**
+- **Features:** order timestamp, **net amount**, party size, **service type** (takeout / dine-in / delivery), **platform** (Foodpanda / iChef / instore / UberEats), **order type**. :contentReference[oaicite:5]{index=5}
+- **Method:** **K-means** with scaling; silhouette/elbow to pick *k*.  
+- **Segments:** (1) **High-value delivery**, (2) **Habitual takeout**, (3) **Dine-in experience**. :contentReference[oaicite:6]{index=6}
+- **Plays:** LINE preorder for takeout, delivery within a set radius for delivery segment, **group-order discounts** for nearby offices, **hotel breakfast partnership** where present. :contentReference[oaicite:7]{index=7}
 
 ---
 
-## P3 — Demand Forecasting with Prophet
-**Solution:** Predicted **peak intervals** and daily revenue to inform staffing and prep.  
-**Tech highlights:** **Prophet** with weekly/annual seasonality, holiday effects, and promo flags; outlier capping; interval (quantile) forecasts for risk-aware schedules.
+## P3 — Demand Forecasting & Peak-Hour Windows (Prophet)
+**Solution.** Forecasted daily revenue and **best time intervals to serve customers** for staffing and prep.
+
+**Highlights**
+- **Model:** **Prophet** with weekly/annual seasonality, **holiday effects**, school-break flags, **COVID indoor-dining ban** period, and **custom business-hours seasonality**.  
+- **Validation:** backtesting by store; typical **R² ~0.4–0.7** depending on data quality. :contentReference[oaicite:8]{index=8}
 
 ---
 
-## P4 — Item Popularity Ranking with Random Forest
-**Solution:** Ranked menu items by expected sell-through for each site/segment.  
-**Tech highlights:** **Random Forest** with price and margin, recent velocity, seasonality, and **co-purchase graph** stats; evaluated with PR-AUC and **MAP@k**; produced top-N assortments per cluster and site.
+## P4 — Item Popularity Ranking (Random Forest)
+**Solution.** Predicted **per-day item ranks** to shape assortment and promos.
+
+**Highlights**
+- **Targets & inputs:** predict item rank for **2023-10-07 → 2023-10-13** from historical sales; key fields include **product name** (one-hot), **invoice date/time**, and derived velocity features.  
+- **Model:** **Random Forest**; produced **top-N lists** per store/date and a **rank lookup** (get a specific item’s rank or the top-N on a day). :contentReference[oaicite:9]{index=9}
 
 ---
 
 ## P5 — Industry Scorecard for Taiwan Breakfast Shops
-**Solution:** Built a concise **scorecard & report** combining site score, segment potential, and forecast quality to benchmark locations and track impact.  
-**Tech highlights:** Weighted composite index (simple AHP/normalized z-scores); small **BI dashboard** for “where to open / what to stock / when to staff”; exportable playbook.
+**Solution.** A concise **scorecard** combining **site score**, **segment potential**, and **forecast quality** to benchmark locations and track impact; delivered as a small BI view and exportable report. :contentReference[oaicite:10]{index=10}
+
+---
+
+## Results (summary)
+- Clear, interpretable **site competitiveness score (0–5)** derived from revenue vs. rent signals. :contentReference[oaicite:11]{index=11}  
+- **Actionable segment playbook** (preorder, delivery radius, group discounts, hotel partnership). :contentReference[oaicite:12]{index=12}  
+- **Prophet** forecasts identify **peak intervals** and daily revenue; **R² ~0.4–0.7** by store. :contentReference[oaicite:13]{index=13}  
+- **Random Forest** item ranking with date-specific top-N outputs and rank lookup utilities. :contentReference[oaicite:14]{index=14}
 
 ---
 
 ## Stack
-**Python**, **pandas**, **scikit-learn**, **XGBoost**, **Prophet**, **SHAP**, **NetworkX** (co-purchase graphs), **H3** (spatial grids), **Google Maps POI features**
+**Python**, **pandas**, **scikit-learn**, **XGBoost/RandomForest**, **Prophet**, **SHAP**, **Google Maps POI features**
 
+---
+
+## Repo Map (suggested)
+/notebooks
+K_means_customer_clustering.ipynb
+Prophet_Predict_Interval.ipynb
+Random_Forest_Ranking.ipynb
+/docs
+WAI.pptx # slides (sanitized)
+
+## Quick Start (synthetic demo)
+```bash
+pip install -r requirements.txt
+# 1) Customer segments
+jupyter nbconvert --to notebook --execute notebooks/K_means_customer_clustering.ipynb
+# 2) Peak-interval & revenue forecast
+jupyter nbconvert --to notebook --execute notebooks/Prophet_Predict_Interval.ipynb
+# 3) Item ranking
+jupyter nbconvert --to notebook --execute notebooks/Random_Forest_Ranking.ipynb
