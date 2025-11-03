@@ -47,7 +47,7 @@ Breakfast shop operators in Taiwan need a data-driven way to **forecast and opti
 - **Model:** **Prophet** with weekly/annual seasonality, **holiday effects**, school-break flags, **COVID indoor-dining ban** period, and **custom business-hours seasonality**.  
 - **Validation:** backtesting by store; typical **R² ~0.4–0.7** depending on data quality.
 
-<img width="1009" height="432" alt="截圖 2025-11-04 凌晨12 45 46" src="https://github.com/user-attachments/assets/1a7f41e3-d48b-4906-9c57-42ce3bd35ac7" />
+<img width="567" height="487" alt="截圖 2025-11-04 凌晨12 45 46" src="https://github.com/user-attachments/assets/1a7f41e3-d48b-4906-9c57-42ce3bd35ac7" />
 
 ---
 
