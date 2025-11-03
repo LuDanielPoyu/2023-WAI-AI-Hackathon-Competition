@@ -21,6 +21,7 @@ Breakfast shop operators in Taiwan need a data-driven way to **forecast and opti
 - **Revenue class model:** **Random Forest** classifier to predict expected revenue tier; accuracy ~0.65 on holdout; dropping “bus density” improved accuracy.
 - **Cost proxy:** expected rent (area rental) standardized by locality.
 - **Score:** **standardized expected revenue – standardized expected rent**, then mapped to a **0–5 competitiveness score** for easy ranking.
+<img width="567" height="487" alt="截圖 2025-11-04 凌晨12 42 44" src="https://github.com/user-attachments/assets/d2c4c29a-5765-4999-a83c-cee417e65ed6" />
 
 ---
 
