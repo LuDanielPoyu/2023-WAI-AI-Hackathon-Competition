@@ -56,7 +56,7 @@ Breakfast shop operators in Taiwan need a data-driven way to **forecast and opti
 **Highlights:**
 - **Targets & inputs:** predict item rank for **2023-10-07 → 2023-10-13** from historical sales; key fields include **product name** (one-hot), **invoice date/time**, and derived velocity features.  
 - **Model:** **Random Forest**; produced **top-N lists** per store/date and a **rank lookup** (get a specific item’s rank or the top-N on a day).
-- 
+ 
 <img width="567" height="487" alt="截圖 2025-11-04 凌晨12 44 57" src="https://github.com/user-attachments/assets/9cdf8e8a-6112-4117-97a4-31b1bafab127" />
 
 ---
