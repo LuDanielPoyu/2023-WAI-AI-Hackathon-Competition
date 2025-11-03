@@ -8,14 +8,15 @@
 
 ---
 
-## Problem
+## Problem: 
 Breakfast shop operators in Taiwan need a data-driven way to **forecast and optimize revenue** using **geospatial signals** (competition density, public transit proximity, neighborhood income) and transaction patterns.
+
 ---
 
 ## P1 — Geospatial Site Competitiveness Scoring
-**Solution.** Scored candidate locations by expected profitability using geospatial features and composite index.
+**Solution:** Scored candidate locations by expected profitability using geospatial features and composite index.
 
-**Highlights**
+**Highlights:**
 - **Features:** population density, bus-stop density, neighborhood median income, breakfast-shop density (Google Maps POI).
 - **Revenue class model:** **Random Forest** classifier to predict expected revenue tier; accuracy ~0.65 on holdout; dropping “bus density” improved accuracy.
 - **Cost proxy:** expected rent (area rental) standardized by locality.
@@ -24,9 +25,9 @@ Breakfast shop operators in Taiwan need a data-driven way to **forecast and opti
 ---
 
 ## P2 — Customer Segmentation (K-means)
-**Solution.** Clustered customers to guide pricing, promotions, delivery radius, and bundles.
+**Solution:** Clustered customers to guide pricing, promotions, delivery radius, and bundles.
 
-**Highlights**
+**Highlights:**
 - **Features:** order timestamp, **net amount**, party size, **service type** (takeout / dine-in / delivery), **platform** (Foodpanda / iChef / instore / UberEats), **order type**.
 - **Method:** **K-means** with scaling; silhouette/elbow to pick *k*.  
 - **Segments:** (1) **High-value delivery**, (2) **Habitual takeout**, (3) **Dine-in experience**.
@@ -35,25 +36,25 @@ Breakfast shop operators in Taiwan need a data-driven way to **forecast and opti
 ---
 
 ## P3 — Demand Forecasting & Peak-Hour Windows (Prophet)
-**Solution.** Forecasted daily revenue and **best time intervals to serve customers** for staffing and prep.
+**Solution:** Forecasted daily revenue and **best time intervals to serve customers** for staffing and prep.
 
-**Highlights**
+**Highlights:**
 - **Model:** **Prophet** with weekly/annual seasonality, **holiday effects**, school-break flags, **COVID indoor-dining ban** period, and **custom business-hours seasonality**.  
 - **Validation:** backtesting by store; typical **R² ~0.4–0.7** depending on data quality.
 
 ---
 
 ## P4 — Item Popularity Ranking (Random Forest)
-**Solution.** Predicted **per-day item ranks** to shape assortment and promos.
+**Solution:** Predicted **per-day item ranks** to shape assortment and promos.
 
-**Highlights**
+**Highlights:**
 - **Targets & inputs:** predict item rank for **2023-10-07 → 2023-10-13** from historical sales; key fields include **product name** (one-hot), **invoice date/time**, and derived velocity features.  
 - **Model:** **Random Forest**; produced **top-N lists** per store/date and a **rank lookup** (get a specific item’s rank or the top-N on a day).
 
 ---
 
 ## P5 — Industry Scorecard for Taiwan Breakfast Shops
-**Solution.** A concise **scorecard** combining **site score**, **segment potential**, and **forecast quality** to benchmark locations and track impact; delivered as a small BI view and exportable report.
+**Solution:** A concise **scorecard** combining **site score**, **segment potential**, and **forecast quality** to benchmark locations and track impact; delivered as a small BI view and exportable report.
 
 ---
 
