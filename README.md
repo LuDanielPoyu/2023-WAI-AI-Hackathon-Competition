@@ -9,12 +9,11 @@
 ---
 
 ## Problem
-Breakfast shop operators in Taiwan need a data-driven way to **forecast and optimize revenue** using **geospatial signals** (competition density, public transit proximity, neighborhood income) and transaction patterns. :contentReference[oaicite:0]{index=0}
-
+Breakfast shop operators in Taiwan need a data-driven way to **forecast and optimize revenue** using **geospatial signals** (competition density, public transit proximity, neighborhood income) and transaction patterns.
 ---
 
 ## P1 — Geospatial Site Competitiveness Scoring
-**Solution.** Scored candidate locations by expected profitability using geospatial features and a simple composite index.
+**Solution.** Scored candidate locations by expected profitability using geospatial features and composite index.
 
 **Highlights**
 - **Features:** population density, bus-stop density, neighborhood median income, breakfast-shop density (Google Maps POI). :contentReference[oaicite:1]{index=1}
@@ -70,14 +69,6 @@ Breakfast shop operators in Taiwan need a data-driven way to **forecast and opti
 **Python**, **pandas**, **scikit-learn**, **XGBoost/RandomForest**, **Prophet**, **SHAP**, **Google Maps POI features**
 
 ---
-
-## Repo Map (suggested)
-/notebooks
-K_means_customer_clustering.ipynb
-Prophet_Predict_Interval.ipynb
-Random_Forest_Ranking.ipynb
-/docs
-WAI.pptx # slides (sanitized)
 
 ## Quick Start (synthetic demo)
 ```bash
