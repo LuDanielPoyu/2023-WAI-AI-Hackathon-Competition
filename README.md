@@ -1,7 +1,10 @@
 # Geospatial Retail Analytics — Taiwan Breakfast Shops (WAI Data Hackathon)
 
-**Role:** Data Scientist (Team Project)  
-**When:** Nov–Dec 2023 · **Award:** 2nd place, National WAI AI Data Hackathon (industry judges, real commercial datasets)
+**Role:** Data Scientist (Team Project) 
+
+**When:** Nov–Dec 2023 
+
+**Award:** 2nd place, National WAI AI Data Hackathon (industry judges, real commercial datasets)
 
 > **Note:** This portfolio uses sanitized descriptions and **synthetic examples only**.  
 > No proprietary data, partner IDs, or credentials are included.
