@@ -85,9 +85,11 @@ Breakfast shop operators in Taiwan need a data-driven way to **forecast and opti
 ## Quick Start (synthetic demo)
 ```bash
 pip install -r requirements.txt
-# 1) Customer segments
+# 1) Competitiveness scores
+jupyter nbconvert --to notebook --execute notebooks/01_site-competitiveness-score_random-forest.ipynb
+# 2) Customer segments
 jupyter nbconvert --to notebook --execute notebooks/02_customer-segmentation-kmeans.ipynb
-# 2) Peak-interval & revenue forecast
+# 3) Peak-interval & revenue forecast
 jupyter nbconvert --to notebook --execute notebooks/03_demand-forecast-prophet.ipynb
-# 3) Item ranking
+# 4) Item ranking
 jupyter nbconvert --to notebook --execute notebooks/04_item-ranking-random-forest.ipynb
